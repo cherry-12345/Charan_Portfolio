@@ -22,7 +22,7 @@ interface ParticleSystemProps {
 }
 
 export default function ParticleSystem({ 
-    particleCount = 50, 
+    particleCount = 25, 
     colors = ['#00F5D4', '#F72585', '#A855F7'],
     className = ''
 }: ParticleSystemProps) {
@@ -103,9 +103,9 @@ export default function ParticleSystem({
                     const dy = particle.y - otherParticle.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 100) {
+                    if (distance < 80) {
                         ctx.save();
-                        ctx.globalAlpha = (1 - distance / 100) * 0.2;
+                        ctx.globalAlpha = (1 - distance / 80) * 0.15;
                         ctx.strokeStyle = particle.color;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();

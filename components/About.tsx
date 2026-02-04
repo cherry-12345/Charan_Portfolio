@@ -12,7 +12,7 @@ const stats = [
     { value: '∞', label: 'Always Learning', icon: '📚' },
 ];
 
-export default function About() {
+function About() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -191,3 +191,5 @@ export default function About() {
         </section>
     );
 }
+
+export default React.memo(About);

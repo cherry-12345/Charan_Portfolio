@@ -7,10 +7,10 @@ export default function PageLoader() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate loading time
+        // Reduced loading time for better perceived performance
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 1200);
 
         return () => clearTimeout(timer);
     }, []);

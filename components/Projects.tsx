@@ -63,7 +63,7 @@ const projects = [
     },
 ];
 
-export default function Projects() {
+function Projects() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -152,3 +152,5 @@ export default function Projects() {
         </section>
     );
 }
+
+export default React.memo(Projects);

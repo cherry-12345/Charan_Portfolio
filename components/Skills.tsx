@@ -65,7 +65,7 @@ interface SkillBadgeProps {
     gradient: string;
 }
 
-const SkillBadge = ({ skill, index, gradient }: SkillBadgeProps) => {
+const SkillBadge = React.memo(({ skill, index, gradient }: SkillBadgeProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -101,14 +101,14 @@ const SkillBadge = ({ skill, index, gradient }: SkillBadgeProps) => {
             </div>
         </motion.div>
     );
-};
+});
 
 interface SkillCategoryCardProps {
     category: typeof skillCategories[0];
     index: number;
 }
 
-const SkillCategoryCard = ({ category, index }: SkillCategoryCardProps) => {
+const SkillCategoryCard = React.memo(({ category, index }: SkillCategoryCardProps) => {
     const [rotateX, setRotateX] = useState(0);
     const [rotateY, setRotateY] = useState(0);
 
@@ -180,9 +180,9 @@ const SkillCategoryCard = ({ category, index }: SkillCategoryCardProps) => {
             </div>
         </motion.div>
     );
-};
+});
 
-export default function Skills() {
+function Skills() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -243,3 +243,5 @@ export default function Skills() {
         </section>
     );
 }
+
+export default React.memo(Skills);

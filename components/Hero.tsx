@@ -18,13 +18,13 @@ const roles = [
 ];
 
 // Neural Network Background Component
-const NeuralNetwork = () => {
+const NeuralNetwork = React.memo(() => {
     const [nodes, setNodes] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
 
     useEffect(() => {
         // Generate nodes only on client side to avoid hydration mismatch
         setNodes(
-            Array.from({ length: 20 }, (_, i) => ({
+            Array.from({ length: 10 }, (_, i) => ({
                 id: i,
                 x: Math.random() * 100,
                 y: Math.random() * 100,
@@ -89,10 +89,10 @@ const NeuralNetwork = () => {
             </svg>
         </div>
     );
-};
+});
 
 // Floating 3D Shapes
-const FloatingShapes = () => (
+const FloatingShapes = React.memo(() => (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* 3D Cube */}
         <motion.div
@@ -125,7 +125,7 @@ const FloatingShapes = () => (
         </motion.div>
 
         {/* Floating Orbs */}
-        {[...Array(5)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
             <motion.div
                 key={i}
                 animate={{
@@ -156,7 +156,7 @@ const FloatingShapes = () => (
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-neon-cyan/20 via-neon-pink/10 to-transparent blur-3xl"
         />
     </div>
-);
+));
 
 const useTypingEffect = (texts: string[], typingSpeed = 100, deletingSpeed = 50, pauseDuration = 2000) => {
     const [displayedText, setDisplayedText] = useState('');
@@ -201,8 +201,8 @@ export default function Hero() {
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
             {/* Premium Background Effects */}
             <AmbientLight />
-            <ParticleSystem particleCount={30} className="opacity-40" />
-            <FloatingOrbs count={12} />
+            <ParticleSystem particleCount={20} className="opacity-40" />
+            <FloatingOrbs count={8} />
             
             {/* Neural Network Background */}
             <NeuralNetwork />

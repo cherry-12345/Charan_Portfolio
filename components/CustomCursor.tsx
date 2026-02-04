@@ -1,25 +1,37 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 export default function CustomCursor() {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isPointer, setIsPointer] = useState(false);
+    const rafRef = useRef<number>();
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            setPosition({ x: e.clientX, y: e.clientY });
+            if (rafRef.current) {
+                cancelAnimationFrame(rafRef.current);
+            }
 
-            const target = e.target as HTMLElement;
-            setIsPointer(
-                window.getComputedStyle(target).cursor === 'pointer' ||
-                target.tagName === 'A' ||
-                target.tagName === 'BUTTON'
-            );
+            rafRef.current = requestAnimationFrame(() => {
+                setPosition({ x: e.clientX, y: e.clientY });
+
+                const target = e.target as HTMLElement;
+                setIsPointer(
+                    window.getComputedStyle(target).cursor === 'pointer' ||
+                    target.tagName === 'A' ||
+                    target.tagName === 'BUTTON'
+                );
+            });
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            if (rafRef.current) {
+                cancelAnimationFrame(rafRef.current);
+            }
+        };
     }, []);
 
     return (
