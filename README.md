@@ -105,7 +105,7 @@ Add your resume PDF to `public/resume.pdf` to enable the download functionality.
 ## 📧 Contact
 
 - **Email**: charancherrykatkam@gmail.com
-- **Phone**: +91 96529 47909
+- **Phone**: +91 965********
 - **GitHub**: [cherry-12345](https://github.com/cherry-12345)
 - **LinkedIn**: [Charan Katkam](https://www.linkedin.com/in/charan-katkam-160135259/)
 
