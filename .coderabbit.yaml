@@ -1,0 +1,56 @@
+# CodeRabbit Configuration for Charan Portfolio
+# Visit https://coderabbit.ai to enable this configuration
+
+# Language settings
+language: en-US
+
+# Review settings
+reviews:
+  # Request changes on critical issues
+  request_changes_workflow: true
+  
+  # High-level summary of changes
+  high_level_summary: true
+  
+  # Review focus areas
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  
+  # Auto-review on PR
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+      - master
+      - develop
+
+# Code quality checks
+tone_instructions: "Be concise, technical, and focus on code quality, performance, security, and best practices for Next.js, TypeScript, and React."
+
+# Path-based instructions
+path_instructions:
+  - path: "app/**/*.tsx"
+    instructions: "Review for React best practices, component structure, hooks usage, and performance optimizations."
+  
+  - path: "components/**/*.tsx"
+    instructions: "Check for reusability, prop types, accessibility, and proper TypeScript typing."
+  
+  - path: "**/*.css"
+    instructions: "Verify Tailwind CSS usage, responsiveness, and design consistency."
+  
+  - path: "*.config.*"
+    instructions: "Review configuration for security and optimization settings."
+
+# Chat settings
+chat:
+  auto_reply: true
+
+# Knowledge base - project specific context
+knowledge_base:
+  - "This is a Next.js 15 portfolio using App Router"
+  - "Tech stack: Next.js, TypeScript, Tailwind CSS, Framer Motion"
+  - "Focus on performance, animations at 60fps, and accessibility"
+  - "Color scheme: Neon cyan (#00F5D4) and pink (#F72585)"
+  - "Must support reduced motion preferences"
